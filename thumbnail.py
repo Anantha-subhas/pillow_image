@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageFilter
 import os
 
 #  create dirs
@@ -18,3 +18,12 @@ for f in os.listdir("images"):
 
         i.thumbnail(size_500)
         i.save(f"500/{fn}500{ln}")
+
+img = Image.open("images/img1.jpeg")
+img.rotate(90).save("images/img1-rotate.jpeg")
+
+convert = Image.open("images/img2.jpg")
+img.convert(mode="L").save("images/b&w.jpg")
+
+blur_img = Image.open("images/img2.jpg")
+img.filter(ImageFilter.GaussianBlur(10)).save("images/img2_blur.jpg")
